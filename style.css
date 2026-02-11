@@ -17,7 +17,7 @@ h1 {
 }
 
 #question {
-  font-size: 64px;   /* SAME SIZE AS CHOICES */
+  font-size: 64px;
   margin: 40px 0;
 }
 
@@ -70,7 +70,7 @@ h1 {
   display: block;
 }
 
-/* FULL SCREEN CONFETTI */
+/* CONFETTI OVERLAY */
 #celebration {
   position: fixed;
   top: 0;
@@ -78,10 +78,14 @@ h1 {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  display: flex;
+  display: none;        /* hidden by default */
   align-items: flex-start;
   justify-content: center;
   z-index: 999;
+}
+
+#celebration.show {
+  display: flex;        /* only show when correct */
 }
 
 #celebration img {
@@ -116,4 +120,3 @@ h1 {
   color: white;
   cursor: pointer;
 }
-
