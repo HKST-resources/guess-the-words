@@ -122,10 +122,10 @@ function showHint() {
 
 function showCelebration() {
   const celebration = document.getElementById("celebration");
-  celebration.classList.add("show");
+  celebration.classList.remove("hidden");
 
   setTimeout(() => {
-    celebration.classList.remove("show");
+    celebration.classList.add("hidden");
   }, 2000);
 }
 
