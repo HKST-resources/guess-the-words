@@ -3,27 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>難字猜一猜</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div id="game-container">
 
-  <h1>🌈 難字猜一猜 🌈</h1>
+  <h1> 難字猜一猜 </h1>
 
   <div id="question">
     <span id="sentence"></span>
-    <span id="keyword"></span>
+    <img id="hint-icon" src="images/question.png" onclick="showHint()">
   </div>
 
   <div id="choices"></div>
 
+  <!-- Full screen confetti overlay -->
   <div id="celebration" class="hidden">
     <img src="images/celebration.gif">
   </div>
 
   <div id="score-screen" class="hidden">
-    <h2>🎉 太棒了！🎉</h2>
+    <h2>🎉 做得好！🎉</h2>
     <div id="star-container"></div>
     <button id="restart-btn" onclick="restartGame()">🔁 再玩一次</button>
   </div>
@@ -33,3 +38,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
