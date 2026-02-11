@@ -1,0 +1,103 @@
+body {
+  background: #fff7d6;
+  font-family: "DFKai-SB", "標楷體", serif;
+  text-align: center;
+}
+
+#game-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 56px;
+  color: #ff6f61;
+  margin-top: 20px;
+}
+
+#question {
+  font-size: 42px;
+  margin: 30px 0;
+}
+
+#keyword {
+  margin-left: 10px;
+  padding: 0 12px;
+  border-bottom: 6px solid transparent;
+}
+
+.red-line {
+  border-bottom: 6px solid red !important;
+}
+
+#choices {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.choice {
+  width: 150px;
+  min-height: 180px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.choice:active {
+  transform: scale(0.95);
+}
+
+.word-box {
+  background: #ffcc70;
+  border-radius: 20px;
+  font-size: 64px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picture {
+  width: 120px;
+  margin-top: 10px;
+  display: none;
+}
+
+.choice.revealed .picture {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+#celebration img {
+  width: 300px;
+  margin-top: 20px;
+}
+
+#score-screen {
+  margin-top: 50px;
+}
+
+#score-screen h2 {
+  font-size: 60px;
+  color: #ff6f61;
+}
+
+#star-container {
+  font-size: 60px;
+  margin: 20px 0;
+}
+
+#restart-btn {
+  font-size: 36px;
+  padding: 15px 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
