@@ -19,7 +19,7 @@ const questions = [
   },
   {
     sentence: "我最愛在夏天吃冰凍的___糕。",
-    keyword: "夏天、冰凍",
+    keyword: "夏天",
     choices: ["蛋", "雪", "年", "大"],
     answer: "雪"
   },
@@ -55,9 +55,13 @@ let score = 0;
 function loadQuestion() {
   const q = questions[current];
 
-  document.getElementById("sentence").innerText = q.sentence;
-  document.getElementById("keyword").innerText = `（提示：${q.keyword}）`;
-  document.getElementById("keyword").classList.remove("red-line");
+  // Replace keyword in sentence with span
+  const sentenceHTML = q.sentence.replace(
+    q.keyword,
+    `<span id="keyword-text">${q.keyword}</span>`
+  );
+
+  document.getElementById("sentence").innerHTML = sentenceHTML;
 
   const choicesDiv = document.getElementById("choices");
   choicesDiv.innerHTML = "";
@@ -72,14 +76,12 @@ function loadQuestion() {
     `;
 
     choice.onclick = () => handleChoice(choice, word);
-
     choicesDiv.appendChild(choice);
   });
 }
 
 function handleChoice(choiceElement, word) {
 
-  // First tap: reveal picture
   if (!choiceElement.classList.contains("revealed")) {
     document.querySelectorAll(".choice").forEach(c =>
       c.classList.remove("revealed")
@@ -88,19 +90,16 @@ function handleChoice(choiceElement, word) {
     return;
   }
 
-  // Second tap: submit answer
   checkAnswer(word);
 }
 
 function checkAnswer(word) {
   if (word === questions[current].answer) {
     score++;
-    document.getElementById("celebration").classList.remove("hidden");
+    showCelebration();
 
     setTimeout(() => {
-      document.getElementById("celebration").classList.add("hidden");
       current++;
-
       if (current < questions.length) {
         loadQuestion();
       } else {
@@ -109,25 +108,38 @@ function checkAnswer(word) {
     }, 2000);
 
   } else {
-    document.getElementById("keyword").classList.add("red-line");
+    highlightKeyword();
   }
+}
+
+function highlightKeyword() {
+  const keyword = document.getElementById("keyword-text");
+  if (keyword) keyword.classList.add("keyword");
+}
+
+function showHint() {
+  highlightKeyword();
+}
+
+function showCelebration() {
+  const celebration = document.getElementById("celebration");
+  celebration.classList.remove("hidden");
+
+  setTimeout(() => {
+    celebration.classList.add("hidden");
+  }, 2000);
 }
 
 function showScoreScreen() {
   document.getElementById("question").style.display = "none";
   document.getElementById("choices").style.display = "none";
-
   document.getElementById("score-screen").classList.remove("hidden");
 
   const starContainer = document.getElementById("star-container");
   starContainer.innerHTML = "";
 
   for (let i = 0; i < questions.length; i++) {
-    if (i < score) {
-      starContainer.innerHTML += "⭐";
-    } else {
-      starContainer.innerHTML += "☆";
-    }
+    starContainer.innerHTML += i < score ? "⭐" : "☆";
   }
 }
 
