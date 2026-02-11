@@ -55,7 +55,6 @@ let score = 0;
 function loadQuestion() {
   const q = questions[current];
 
-  // Replace keyword in sentence with span
   const sentenceHTML = q.sentence.replace(
     q.keyword,
     `<span id="keyword-text">${q.keyword}</span>`
@@ -123,10 +122,10 @@ function showHint() {
 
 function showCelebration() {
   const celebration = document.getElementById("celebration");
-  celebration.classList.remove("hidden");
+  celebration.classList.add("show");
 
   setTimeout(() => {
-    celebration.classList.add("hidden");
+    celebration.classList.remove("show");
   }, 2000);
 }
 
