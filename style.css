@@ -1,47 +1,48 @@
 body {
   background: #fff7d6;
-  font-family: "DFKai-SB", "標楷體", serif;
+  font-family: 'Noto Sans TC', sans-serif;
   text-align: center;
+  margin: 0;
 }
 
 #game-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
+  padding-top: 20px;
 }
 
 h1 {
   font-size: 56px;
   color: #ff6f61;
-  margin-top: 20px;
 }
 
 #question {
-  font-size: 42px;
-  margin: 30px 0;
+  font-size: 64px;   /* SAME SIZE AS CHOICES */
+  margin: 40px 0;
 }
 
-#keyword {
-  margin-left: 10px;
-  padding: 0 12px;
-  border-bottom: 6px solid transparent;
+.keyword {
+  color: red;
 }
 
-.red-line {
-  border-bottom: 6px solid red !important;
+#hint-icon {
+  width: 60px;
+  margin-left: 20px;
+  cursor: pointer;
+  vertical-align: middle;
 }
 
 #choices {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
   margin-top: 40px;
 }
 
 .choice {
-  width: 150px;
-  min-height: 180px;
+  width: 170px;
+  min-height: 220px;
   cursor: pointer;
-  text-align: center;
   transition: transform 0.2s;
 }
 
@@ -53,14 +54,14 @@ h1 {
   background: #ffcc70;
   border-radius: 20px;
   font-size: 64px;
-  height: 150px;
+  height: 170px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .picture {
-  width: 120px;
+  width: 140px;
   margin-top: 10px;
   display: none;
 }
@@ -69,17 +70,31 @@ h1 {
   display: block;
 }
 
+/* FULL SCREEN CONFETTI */
+#celebration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 999;
+}
+
+#celebration img {
+  width: 500px;
+  margin-top: 50px;
+}
+
 .hidden {
   display: none;
 }
 
-#celebration img {
-  width: 300px;
-  margin-top: 20px;
-}
-
 #score-screen {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 #score-screen h2 {
@@ -88,8 +103,8 @@ h1 {
 }
 
 #star-container {
-  font-size: 60px;
-  margin: 20px 0;
+  font-size: 70px;
+  margin: 30px 0;
 }
 
 #restart-btn {
@@ -101,3 +116,4 @@ h1 {
   color: white;
   cursor: pointer;
 }
+
